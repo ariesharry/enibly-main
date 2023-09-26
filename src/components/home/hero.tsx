@@ -83,7 +83,7 @@ const HomeHero: FC = () => {
                       backgroundColor: 'unset',
                     }}
                   >
-                    Improve{' '}
+                    Build{' '}
                     <Box
                       sx={{
                         position: 'absolute',
