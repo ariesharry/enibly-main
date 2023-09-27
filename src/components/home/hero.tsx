@@ -7,6 +7,33 @@ import Typography from '@mui/material/Typography'
 import { Link as ScrollLink } from 'react-scroll'
 import { StyledButton } from '@/components/styled-button'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import FeatureCard from './feature-card'
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import LanguageIcon from '@mui/icons-material/Language';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
+import styled from '@emotion/styled';
+
+const SliderMask = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0) 80%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  pointer-events: none;  // This line ensures the mask doesn't interfere with user interactions
+`;
+
 
 interface Exp {
   label: string
@@ -48,6 +75,18 @@ const ExpItem: FC<ExpItemProps> = ({ item }) => {
 }
 
 const HomeHero: FC = () => {
+  const settings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 4000,
+    cssEase: 'linear',
+    centerMode: true,
+    centerPadding: '80px',
+  };
+
   return (
     <Box id="hero" sx={{ backgroundColor: 'background.paper', position: 'relative', pt: 4, pb: { xs: 8, md: 10 } }}>
       <Container maxWidth="lg">
@@ -83,7 +122,7 @@ const HomeHero: FC = () => {
                       backgroundColor: 'unset',
                     }}
                   >
-                    Build{' '}
+                    Enibly Bot{' '}
                     <Box
                       sx={{
                         position: 'absolute',
@@ -97,7 +136,7 @@ const HomeHero: FC = () => {
                       <img src="/images/headline-curve.svg" alt="Headline curve" />
                     </Box>
                   </Typography>
-                  your{' '}
+                  <br></br>your Personalized
                   <Typography
                     component="span"
                     sx={{
@@ -113,7 +152,7 @@ const HomeHero: FC = () => {
                       },
                     }}
                   >
-                    Skill
+                    <br/>AI Partner{' '}
                     <svg version="1.1" viewBox="0 0 3183 3072">
                       <g id="Layer_x0020_1">
                         <path
@@ -131,26 +170,25 @@ const HomeHero: FC = () => {
                       </g>
                     </svg>
                   </Typography>{' '}
-                  <br />
-                  with Different Way
+                  
                 </Typography>
               </Box>
               <Box sx={{ mb: 4, width: { xs: '100%', md: '70%' } }}>
                 <Typography sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
                   {
-                    "Let's take an online course to improve your skills in a different way, you can set your own study time according to your learning speed. So you san study comfortable and absorb tge material easily."
+                    "Welcome to the future of personalized AI partner, brought to you by Enibly Bot. Imagine having conversations with an AI that understands not just the context, but your unique preferences and data sources. That's what Enibly Bot delivers, taking the essence of conversational AI a notch higher."
                   }
                 </Typography>
               </Box>
               <Box sx={{ '& button': { mr: 2 } }}>
-                <ScrollLink to="popular-course" spy={true} smooth={true} offset={0} duration={350}>
+                <ScrollLink to="newsletter" spy={true} smooth={true} offset={0} duration={350}>
                   <StyledButton color="primary" size="large" variant="contained">
-                    Get Started
+                    Try Free
                   </StyledButton>
                 </ScrollLink>
-                <ScrollLink to="video-section" spy={true} smooth={true} offset={0} duration={350}>
+                <ScrollLink to="feature" spy={true} smooth={true} offset={0} duration={350}>
                   <StyledButton color="primary" size="large" variant="outlined" startIcon={<PlayArrowIcon />}>
-                    Watch Video
+                    Learn More
                   </StyledButton>
                 </ScrollLink>
               </Box>
@@ -158,57 +196,42 @@ const HomeHero: FC = () => {
           </Grid>
           <Grid item xs={12} md={5} sx={{ position: 'relative' }}>
             {/* Sertificate badge */}
-            <Box
-              sx={{
-                position: 'absolute',
-                bottom: 30,
-                left: { xs: 0, md: -150 },
-                boxShadow: 1,
-                borderRadius: 3,
-                px: 2,
-                py: 1.4,
-                zIndex: 1,
-                backgroundColor: 'background.paper',
-                display: 'flex',
-                alignItems: 'flex-start',
-                width: 280,
-              }}
-            >
-              <Box
-                sx={{
-                  boxShadow: 1,
-                  borderRadius: '50%',
-                  width: 44,
-                  height: 44,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 2,
-                  '& img': { width: '32px !important', height: 'auto' },
-                }}
-              >
-                <Image src="/images/certificate.png" alt="Certificate icon" width={50} height={50} quality={97} />
-              </Box>
-              <Box>
-                <Typography
-                  component="h6"
-                  sx={{ color: 'secondary.main', fontSize: '1.1rem', fontWeight: 700, mb: 0.5 }}
-                >
-                  Certificate
-                </Typography>
-                <Typography variant="subtitle1" sx={{ color: 'text.secondary', lineHeight: 1.3 }}>
-                  There are certificates for all courses.
-                </Typography>
-              </Box>
+            <Box sx={{ lineHeight: 0,  }}>
+              <Image src="/images/hero.png" width={800} height={787} alt="Hero img"
+              style={{ filter: 'drop-shadow(0px 4px 10px rgba(0,0,0,0.3))' }}
+              />
             </Box>
-            <Box sx={{ lineHeight: 0 }}>
-              <Image src="/images/home-hero.jpg" width={775} height={787} alt="Hero img" />
+            <Box sx={{ height: '50%', position: 'relative' }}>
+              <Slider {...settings}>
+                <div>
+                  <FeatureCard title="Custom Prompt" 
+                  description="Tailor interactions to suit your needs, ensuring a personalized user experience." 
+                  icon={<EngineeringIcon />} />
+                </div>
+                <div>
+                  <FeatureCard title="Web Data Source" 
+                  description="Fetch and utilize data from web sources for real-time, accurate responses." 
+                  icon={<LanguageIcon />} />
+                </div>
+                <div>
+                  <FeatureCard title="File Data Source" 
+                  description="Extract information from various file formats effortlessly" 
+                  icon={<DocumentScannerIcon />} />
+                </div>
+                <div>
+                  <FeatureCard title="GitHub Source" 
+                  description="Sync and access data directly from your GitHub repositories" 
+                  icon={<GitHubIcon />} />
+                </div>
+              </Slider>
+              <SliderMask />
             </Box>
           </Grid>
+          
         </Grid>
 
         {/* Experience */}
-        <Box sx={{ boxShadow: 2, py: 4, px: 7, borderRadius: 4 }}>
+        {/* <Box sx={{ boxShadow: 2, py: 4, px: 7, borderRadius: 4 }}>
           <Grid container spacing={2}>
             {exps.map((item) => (
               <Grid key={item.value} item xs={12} md={4}>
@@ -216,7 +239,7 @@ const HomeHero: FC = () => {
               </Grid>
             ))}
           </Grid>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   )

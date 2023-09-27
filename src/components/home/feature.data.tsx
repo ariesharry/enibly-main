@@ -12,23 +12,36 @@ interface Data {
 
 export const data: Data[] = [
   {
-    title: 'Easy Accessable',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'Simple Setup',
+    description: 'Connecting your data sources is a straightforward process. With easy setup options.',
     icon: <ArtTrackIcon />,
   },
   {
-    title: 'More Affordable Cost',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'Web or Files',
+    description: ' Whether it’s data from the web, files on your computer, or repositories on GitHub, Enibly Bot can handle it all.',
     icon: <AttachMoneyIcon />,
   },
   {
-    title: 'Flexible Study Time',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'Real-Time Access',
+    description: 'Get real-time access to your data whenever you need it.',
     icon: <LocalLibraryIcon />,
   },
   {
-    title: 'Consultation With Mentor',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore',
+    title: 'Secure',
+    description: 'Your data’s security is our priority, secure and private.',
     icon: <ContactSupportIcon />,
+  },
+]
+
+export const data2: Data[] = [
+  {
+    title: 'Tailor-Made',
+    description: 'Customize prompts to fit your style and preferences.',
+    icon: <ArtTrackIcon />,
+  },
+  {
+    title: 'Easy Setup',
+    description: 'With just a few simple clicks, you can set up personalized prompts.',
+    icon: <AttachMoneyIcon />,
   },
 ]

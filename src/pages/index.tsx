@@ -2,7 +2,7 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { NextPageWithLayout } from '@/interfaces/layout'
 import { MainLayout } from '@/components/layout'
-// import { HomeFeature, HomeHero, HomePopularCourse, HomeTestimonial, HomeOurMentors, DynamicHomeNewsLetter } from '@/components/home'
+import { HomeFeature, HomeHero, HomePopularCourse, HomeTestimonial, HomeOurMentors, HomeNewsLetter } from '@/components/home'
 
 const DynamicHomeHero = dynamic(() => import('../components/home/hero'))
 const DynamicHomeFeature = dynamic(() => import('../components/home/feature'))
@@ -15,10 +15,10 @@ const Home: NextPageWithLayout = () => {
   return (
     <>
       <DynamicHomeHero />
-      <DynamicHomePopularCourse />
+      {/* <DynamicHomePopularCourse /> */}
       <DynamicHomeFeature />
-      <DynamicHomeTestimonial />
-      <DynamicHomeOurMentors />
+      {/* <DynamicHomeTestimonial /> */}
+      {/* <DynamicHomeOurMentors /> */}
       <DynamicHomeNewsLetter />
     </>
   )
