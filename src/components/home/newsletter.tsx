@@ -11,7 +11,7 @@ const HomeNewsLetter: FC = () => {
   const [email, setEmail] = useState('');  // Added this line
   const [submitted, setSubmitted] = useState(false);  // Added this line
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {  // Updated this line
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>): void => {  // Updated this line
     e.preventDefault();
 
     if (form.current) {  // Updated this line
